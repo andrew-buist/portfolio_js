@@ -1,26 +1,58 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-sunset: #f2c57c;
+  --color-choiceorange: #e4572e;
+  --color-palegreen: #7fb685;
+  --color-deepgreen: #426a5a;
+  --color-greylight: #d2d3d0;
+  --color-greydark: #50514f;
+
+  --color-a0: var(--color-sunset);
+  --color-a1: var(--color-choiceorange);
+  --color-b0: var(--color-palegreen);
+  --color-b1: var(--color-deepgreen);
+  --color-c0: var(--color-greylight);
+  --color-c1: var(--color-greydark);
+
+  --grid-scroll-bg: url('/crosshatch-light.webp');
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-sunset: var(--color-sunset);
+  --color-choiceorange: var(--color-choiceorange);
+  --color-palegreen: var(--color-palegreen);
+  --color-deepgreen: var(--color-deepgreen);
+  --color-greylight: var(--color-greylight);
+  --color-greydark: var(--color-greydark);
+
+  --color-palette-a0: var(--color-a0);
+  --color-palette-a1: var(--color-a1);
+  --color-palette-b0: var(--color-b0);
+  --color-palette-b1: var(--color-b1);
+  --color-palette-c0: var(--color-c0);
+  --color-palette-c1: var(--color-c1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --grid-scroll-bg: url('/crosshatch-dark.webp');
+
+    --color-a0: var(--color-choiceorange);
+    --color-a1: var(--color-sunset);
+    --color-b0: var(--color-deepgreen);
+    --color-b1: var(--color-palegreen);
+    --color-c0: var(--color-greydark);
+    --color-c1: var(--color-greylight);
   }
 }
 
 body {
-  background: var(--background);
+  background: var(--grid-scroll-bg) repeat 0 0;
+  animation: bg-scrolling-reverse 5s linear infinite;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }

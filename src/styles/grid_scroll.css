@@ -1,0 +1,10 @@
+@keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 128px 128px;
+  }
+}
+@keyframes bg-scrolling {
+  0% {
+    background-position: 128px 128px;
+  }
+}
