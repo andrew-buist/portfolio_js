@@ -15,7 +15,7 @@
   --color-c0: var(--color-greylight);
   --color-c1: var(--color-greydark);
 
-  --grid-scroll-bg: url('/crosshatch-light.webp');
+  --grid-scroll-bg: url('../../public/crosshatch-light.webp');
 }
 
 @theme inline {
@@ -39,7 +39,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --grid-scroll-bg: url('/crosshatch-dark.webp');
+    --grid-scroll-bg: url('../../public/crosshatch-dark.webp');
 
     --color-a0: var(--color-choiceorange);
     --color-a1: var(--color-sunset);
