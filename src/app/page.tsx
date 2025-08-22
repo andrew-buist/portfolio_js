@@ -2,9 +2,7 @@
 
 import '../styles/grid_scroll.css'
 
-import React, { useEffect, useRef, useState } from "react";
-import ReactDOM from "react-dom";
-import Image from "next/image";
+import React, { useRef } from "react";
 import Draggable from 'react-draggable';
 import { useZIndex, ZIndexProvider } from '../components/ZIndexContext'
 
@@ -41,7 +39,7 @@ export default function App() {
           <div className="bg-greylight inline-block max-w-2/10 aspect-square">
             <div className="handle cursor-pointer bg-palette-b1 border-palette-b1 font-bold text-palette-c0 inset-shadow-sm/80 inset-shadow-white px-2 py-1">Capybara</div>
             <div className="px-6 py-2 border-palette-b1">
-              <img src = "https://images.wallpapersden.com/image/download/capybara-muzzle-nose_aWtmbZSZmpqtpaSklGZsbGetZmZtZg.jpg"/>
+              <img src="https://images.wallpapersden.com/image/download/capybara-muzzle-nose_aWtmbZSZmpqtpaSklGZsbGetZmZtZg.jpg" alt=""/>
             </div>
           </div>
         </DraggableWrapper>
@@ -49,7 +47,7 @@ export default function App() {
           <div className="bg-greylight inline-block max-w-2/10 aspect-square">
             <div className="handle cursor-pointer bg-palette-b1 border-palette-b1 font-bold text-palette-c0 inset-shadow-sm/80 inset-shadow-white px-2 py-1">Yapyara</div>
             <div className="px-6 py-2 border-palette-b1">
-              <img src = "https://cdn.zmescience.com/wp-content/uploads/2017/06/Capybara_portrait.jpg"/>
+              <img src="https://cdn.zmescience.com/wp-content/uploads/2017/06/Capybara_portrait.jpg" alt=""/>
             </div>
           </div>
         </DraggableWrapper>
