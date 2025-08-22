@@ -2,49 +2,58 @@
 
 import '../styles/grid_scroll.css'
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import Image from "next/image";
-import Draggable from "react-draggable";
+import Draggable from 'react-draggable';
+import { useZIndex, ZIndexProvider } from '../components/ZIndexContext'
 
-export default function Home() {
-    const draggableRef = React.useRef(null);
-    return(
-      <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-2 pb-20 gap-16 sm:p-20">
-        <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-          <Draggable 
-          nodeRef = {draggableRef} 
-          handle = ".handle">
-            <div ref = {draggableRef} className = "bg-greylight border-palette-b1 border-4">
-              <div className = "handle cursor-pointer bg-palette-b1 border-palette-b1 font-bold text-palette-c0">Welcome to my website!</div>
-              <div className = "px-6 py-2">
-                line<br/>
-                line<br/>
-                line<br/>
-                line<br/>
-                line<br/>
-                line<br/>
-              </div>
-            </div>
-          </Draggable>
-          <Draggable 
-          nodeRef = {draggableRef} 
-          handle = ".handle">
-            <div ref = {draggableRef} className = "bg-greylight border-palette-b1 border-4">
-              <div className = "handle cursor-pointer bg-palette-b1 border-palette-b1 font-bold text-palette-c0">Welcome to my website!</div>
-              <div className = "px-6 py-2">
-                line<br/>
-                line<br/>
-                line<br/>
-                line<br/>
-                line<br/>
-                line<br/>
-              </div>
-            </div>
-          </Draggable>
-        </main>
-        <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        </footer>
-      </div>
+export default function App() {
+  const nullNodeRef = useRef(null) /** due to version changes, must pass node ref to draggable but can be empty */
+
+  type DraggableWrapperProps = {
+    id: string;
+    children: React.ReactNode;
+  };
+
+  const DraggableWrapper = ({ id, children }: DraggableWrapperProps) => {
+    const { zIndexMap, bringToFront } = useZIndex();
+    const z = zIndexMap[id] ?? 0;
+
+    return (
+      <Draggable
+        nodeRef={nullNodeRef}
+        handle=".handle">
+        <div
+          ref={nullNodeRef}
+          onMouseDownCapture={() => { bringToFront(id) }}
+          style={{ zIndex: z, position: 'absolute', cursor: 'default' }}>
+          {children}
+        </div>
+      </Draggable>
     );
+  };
+
+  return (
+    <ZIndexProvider>
+      <div className="w-full h-full">
+        <DraggableWrapper id="box1">
+          <div className="bg-greylight inline-block max-w-2/10 aspect-square">
+            <div className="handle cursor-pointer bg-palette-b1 border-palette-b1 font-bold text-palette-c0 inset-shadow-sm/80 inset-shadow-white px-2 py-1">Capybara</div>
+            <div className="px-6 py-2 border-palette-b1">
+              <img src = "https://images.wallpapersden.com/image/download/capybara-muzzle-nose_aWtmbZSZmpqtpaSklGZsbGetZmZtZg.jpg"/>
+            </div>
+          </div>
+        </DraggableWrapper>
+        <DraggableWrapper id="box2">
+          <div className="bg-greylight inline-block max-w-2/10 aspect-square">
+            <div className="handle cursor-pointer bg-palette-b1 border-palette-b1 font-bold text-palette-c0 inset-shadow-sm/80 inset-shadow-white px-2 py-1">Yapyara</div>
+            <div className="px-6 py-2 border-palette-b1">
+              <img src = "https://cdn.zmescience.com/wp-content/uploads/2017/06/Capybara_portrait.jpg"/>
+            </div>
+          </div>
+        </DraggableWrapper>
+      </div>
+    </ZIndexProvider >
+  );
 }
