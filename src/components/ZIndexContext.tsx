@@ -9,7 +9,7 @@ export const ZIndexProvider = ({ children }: { children: React.ReactNode }) => {
     const bringToFront = (id: string) => {
         const newZ = maxZ + 1;
 
-        console.log("Bringing to front:", id, "with z-index", newZ);
+        //console.log("Bringing to front:", id, "with z-index", newZ);
 
         setMaxZ(newZ);
         setZIndexMap(prev => ({ ...prev, [id]: newZ }));
