@@ -18,19 +18,18 @@ const DraggableCustom: React.FC<DraggableCustomProps> = ({ id, children }) => {
     const bringToFront = () => {
         maxZ++;
         setCurrentZ(maxZ);
-        console.log("Bringing to front:", id, "with z-index", maxZ);
     };
 
     return (
         <Draggable
             nodeRef={childRef}
-            bounds="parent"
+            bounds="body"
             handle=".handle"
             onStart={bringToFront}
         >
             <div
                 ref={childRef}
-                style={{ zIndex: currentZ, position: 'absolute', cursor: 'default' }}
+                style={{ zIndex: currentZ, position: 'relative', cursor: 'default' }}
             >
                 {children}
             </div>

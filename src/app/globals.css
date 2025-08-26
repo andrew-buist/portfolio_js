@@ -1,58 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --color-sunset: #f2c57c;
-  --color-choiceorange: #e4572e;
-  --color-palegreen: #7fb685;
-  --color-deepgreen: #426a5a;
-  --color-greylight: #d2d3d0;
-  --color-greydark: #50514f;
-
-  --color-a0: var(--color-sunset);
-  --color-a1: var(--color-choiceorange);
-  --color-b0: var(--color-palegreen);
-  --color-b1: var(--color-deepgreen);
-  --color-c0: var(--color-greylight);
-  --color-c1: var(--color-greydark);
+  --windows-bar-colour: var(--color-sky-400);
+  --windows-bar-text-colour: var(--color-sky-800);
+  --windows-bg-colour: var(--color-sky-200);
+  --windows-main-text-colour: var(--color-sky-800);
 
   --grid-scroll-bg: url('../../public/crosshatch-light.webp');
 }
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-
-  --color-sunset: var(--color-sunset);
-  --color-choiceorange: var(--color-choiceorange);
-  --color-palegreen: var(--color-palegreen);
-  --color-deepgreen: var(--color-deepgreen);
-  --color-greylight: var(--color-greylight);
-  --color-greydark: var(--color-greydark);
-
-  --color-palette-a0: var(--color-a0);
-  --color-palette-a1: var(--color-a1);
-  --color-palette-b0: var(--color-b0);
-  --color-palette-b1: var(--color-b1);
-  --color-palette-c0: var(--color-c0);
-  --color-palette-c1: var(--color-c1);
+  --font-sans: var(--font-jersey10);
+  --color-winbg: var(--windows-bg-colour);
+  --color-winbar: var(--windows-bar-colour);
+  --color-winbar-text: var(--windows-bar-text-colour);
+  --color-wintext: var(--windows-main-text-colour);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --grid-scroll-bg: url('../../public/crosshatch-dark.webp');
+    --windows-bar-colour: var(--color-sky-800);
+    --windows-bar-text-colour: var(--color-sky-200);
+    --windows-bg-colour: var(--color-sky-200);
+    --windows-main-text-colour: var(--color-sky-800);
 
-    --color-a0: var(--color-choiceorange);
-    --color-a1: var(--color-sunset);
-    --color-b0: var(--color-deepgreen);
-    --color-b1: var(--color-palegreen);
-    --color-c0: var(--color-greydark);
-    --color-c1: var(--color-greylight);
+    --grid-scroll-bg: url('../../public/crosshatch-dark.webp');
   }
 }
 
 body {
-  background: var(--grid-scroll-bg) repeat 0 0;
+  background: var(--grid-scroll-bg) repeat 0 0, var(--color-blue-400);
+  background-blend-mode: luminosity;
   animation: bg-scrolling-reverse 5s linear infinite;
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
